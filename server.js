@@ -5,7 +5,9 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;  // This lets Render set the port
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://www.adwstudium.com'  // Replace with your actual frontend URL
+}));
 app.use(express.json());
 
 // API endpoint to serve product data dynamically
