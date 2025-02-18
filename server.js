@@ -1,7 +1,7 @@
+const path = require("path");
+const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
-const fs = require("fs");
-const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;  // This lets Render set the port
 
@@ -12,7 +12,8 @@ app.use(express.json());
 
 // API endpoint to serve product data dynamically
 app.get("/api/product", (req, res) => {
-  const filePath = path.join(__dirname, "backend", "productData.json");
+  // Use relative path since both files are on the same server in Render
+  const filePath = path.join(__dirname, "productData.json");
 
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
